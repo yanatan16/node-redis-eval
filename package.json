@@ -1,0 +1,25 @@
+{
+  "name": "redis-eval",
+  "description": "A small package to manage redis EVAL SCRIPT caching and EVALSHA calling.",
+  "version": "0.1.0",
+  "author": "Jon Eisen <jon@joneisen.me>",
+  "scripts": {
+    "test": "nodeunit tests"
+  },
+  "keywords": [
+    "redis",
+    "lua"
+  ],
+  "repository": "git://github.com/yanatan16/node-redis-eval.git",
+  "main": "index",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "~1.5.2",
+    "async": "~0.2.9"
+  },
+  "devDependencies": {
+    "redis": "~0.8.4",
+    "moniker": "~0.1.2",
+    "longjohn": "~0.2.1"
+  }
+}
