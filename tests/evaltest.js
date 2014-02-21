@@ -1,7 +1,6 @@
 // evaltest.js
 // Test redis-eval
 
-require('longjohn');
 process.on('uncaughtException', function (err) {
   console.error(err.stack);
 });
