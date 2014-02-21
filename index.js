@@ -21,10 +21,10 @@ function evaluateScript(redis, script_name, keys, args, callback) {
   var sha = shas[script_name];
   if (sha) {
     // Script is loaded
-    return evalSha(redis, sha, keys, args, callback);
+    return evalSha(redis, sha, keys, args, onerror(callback));
   }
 
-  readScript(script_name, function (err, script) {
+  readScript(script_name, onerror(function (err, script) {
     if (err) return onerror(err);
 
     var sha = shaify(script);
@@ -43,12 +43,16 @@ function evaluateScript(redis, script_name, keys, args, callback) {
         }
       ], callback);
     });
-  });
+  }));
 
   // If an error occurs, we must be prudent and assume data was lost. We clean the shas cache.
-  function onerror(err) {
-    shas = {}
-    callback(err)
+  function onerror(cb) {
+    return function (err) {
+      if (err) {
+        shas = {}
+      }
+      callback.apply(null, arguments)
+    }
   }
 }
 
