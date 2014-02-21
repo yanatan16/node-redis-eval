@@ -44,15 +44,15 @@ function evaluateScript(redis, script_name, keys, args, callback) {
       ], callback);
     });
   }));
+}
 
-  // If an error occurs, we must be prudent and assume data was lost. We clean the shas cache.
-  function onerror(cb) {
-    return function (err) {
-      if (err) {
-        shas = {}
-      }
-      callback.apply(null, arguments)
+// If an error occurs, we must be prudent and assume data was lost. We clean the shas cache.
+function onerror(cb) {
+  return function (err) {
+    if (err) {
+      shas = {}
     }
+    cb.apply(null, arguments)
   }
 }
 
