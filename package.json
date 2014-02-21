@@ -1,7 +1,7 @@
 {
   "name": "redis-eval",
   "description": "A small package to manage redis EVAL SCRIPT caching and EVALSHA calling.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Jon Eisen <jon@joneisen.me>",
   "scripts": {
     "test": "nodeunit tests"
