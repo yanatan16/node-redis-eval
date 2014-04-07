@@ -52,6 +52,7 @@ function onerror(cb) {
   return function (err) {
     if (err) {
       shas = {}
+      arguments[0] = err instanceof Error ? err : new Error(err.toString())
     }
     cb.apply(null, arguments)
   }
