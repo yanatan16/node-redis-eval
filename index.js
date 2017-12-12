@@ -26,7 +26,9 @@ function evaluateScript(redis, script_name, keys, args, callback) {
   }
 
   readScript(script_name, function (err, script) {
-    if (err) return err;
+    if (err) {
+      return callback(err)
+    }
 
     var sha = shaify(script);
     checkLoaded(redis, script_name, sha, function (err, exists) {
